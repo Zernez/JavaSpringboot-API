@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -22,4 +22,8 @@ public class PropertyEntity {
     private String description;
     private Double price;
     private String address;
+    @ManyToOne(fetch = FetchType.LAZY) //While getting parent data is not getting child data
+    //@OneToOne(fetch = FetchType.EAGER)//While getting parent data is get child data
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private UserEntity userEntity;
 }
