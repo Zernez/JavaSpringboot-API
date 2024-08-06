@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "ADDRESS_TABLE")
@@ -21,4 +21,8 @@ public class AddressEntity {
     private String city;
     private String postalCode;
     private String country;
+
+    @OneToOne
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private UserEntity userEntity;
 }
